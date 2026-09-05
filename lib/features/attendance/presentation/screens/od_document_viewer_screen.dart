@@ -584,7 +584,7 @@ class _OdDocumentViewerScreenState extends State<OdDocumentViewerScreen> {
                             const SizedBox(height: 2),
                             Text(
                               _isSigned
-                                  ? 'Dr. S. Karthikeyan, M.E., Ph.D. (HOD / AI&DS)'
+                                  ? 'Dr. S. Manivannan, M.E., Ph.D. (Overall HOD / AI&DS)'
                                   : 'Submitted to HOD Office for formal permission',
                               style: AppTheme.inter(fontSize: 11.5, color: AppTheme.ink600),
                             ),
@@ -1033,11 +1033,11 @@ class _SignedHodPermissionSheet extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 2),
                                 const Text(
-                                  'Dr. S. Karthikeyan, M.E., Ph.D.',
+                                  'Dr. S. Manivannan, M.E., Ph.D.',
                                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xFF064E3B)),
                                 ),
                                 const Text(
-                                  'Head of the Department · Dept. of AI&DS',
+                                  'Head of the Department (Overall) · Dept. of AI&DS',
                                   style: TextStyle(fontSize: 10, color: Color(0xFF065F46)),
                                 ),
                                 Text(

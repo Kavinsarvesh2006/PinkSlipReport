@@ -61,22 +61,6 @@ class UserProfile {
     isHodAdmin: true,
   );
 
-  // 3. Associate HOD - Dr. S. Karthikeyan (Read-Only Viewer)
-  static const hodViewerProfile = UserProfile(
-    id: 'HOD003',
-    name: 'Dr. S. Karthikeyan',
-    email: 'karthikeyan.hod@vsb.ac.in',
-    roleTitle: 'Associate HOD (Viewer)',
-    year: 'All Years',
-    section: 'All Sections',
-    department: 'AI & DS',
-    college: 'V.S.B. Engineering College',
-    role: UserRole.hod,
-    canEdit: false,
-    canDelete: false,
-    isHodAdmin: false,
-  );
-
   // Default HOD profile for backward compatibility
   static const hodProfile = hodAdminProfile;
   static const hodManivannanProfile = hodAdminProfile;

@@ -24,8 +24,6 @@ class _SignInScreenState extends State<SignInScreen> {
     UserProfile selectedProfile;
     if (email.contains('kavitha')) {
       selectedProfile = UserProfile.hodKavithaProfile;
-    } else if (email.contains('karthikeyan') || (email.contains('hod') && email.contains('viewer'))) {
-      selectedProfile = UserProfile.hodViewerProfile;
     } else if (email.contains('manivannan') || email.contains('hod')) {
       selectedProfile = UserProfile.hodAdminProfile;
     } else if (email.contains('vishnupriya') || email.contains('sec_a') || email.contains('3a')) {

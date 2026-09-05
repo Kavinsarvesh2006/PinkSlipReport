@@ -125,7 +125,7 @@ class AppStateManager extends ChangeNotifier {
         attachedProofSize: '1.8 MB',
         hodSignedDocName: 'HOD_Signed_OD_Permission_922524243068.pdf',
         hodRemarks: 'Granted OD permission with academic attendance credit.',
-        hodSigner: 'Dr. S. Karthikeyan, M.E., Ph.D. (HOD / AI&DS)',
+        hodSigner: 'Dr. S. Manivannan, M.E., Ph.D. (Overall HOD / AI&DS)',
         timeline: [
           TimelineStage(
             title: 'OD Request & Proof Uploaded',
@@ -142,7 +142,7 @@ class AppStateManager extends ChangeNotifier {
           TimelineStage(
             title: 'HOD Digital Permission & Signed Document',
             when: '24 Aug, 09:15 AM',
-            note: 'Digitally signed by Dr. S. Karthikeyan (HOD). Attached HOD_Signed_OD_Permission_922524243068.pdf (2.4 MB)',
+            note: 'Digitally signed by Dr. S. Manivannan (Overall HOD). Attached HOD_Signed_OD_Permission_922524243068.pdf (2.4 MB)',
             isDone: true,
           ),
         ],
@@ -508,7 +508,7 @@ class AppStateManager extends ChangeNotifier {
         attachedProofSize: '1.8 MB',
         hodSignedDocName: 'HOD_Signed_OD_Permission_922524243068.pdf',
         hodRemarks: 'Granted OD permission with academic attendance credit.',
-        hodSigner: 'Dr. S. Karthikeyan, M.E., Ph.D. (HOD / AI&DS)',
+        hodSigner: 'Dr. S. Manivannan, M.E., Ph.D. (Overall HOD / AI&DS)',
         timeline: [
           TimelineStage(
             title: 'OD Request & Proof Uploaded',
@@ -525,7 +525,7 @@ class AppStateManager extends ChangeNotifier {
           TimelineStage(
             title: 'HOD Digital Permission & Signed Document',
             when: '24 Aug, 09:15 AM',
-            note: 'Digitally signed by Dr. S. Karthikeyan (HOD). Attached HOD_Signed_OD_Permission_922524243068.pdf (2.4 MB)',
+            note: 'Digitally signed by Dr. S. Manivannan (Overall HOD). Attached HOD_Signed_OD_Permission_922524243068.pdf (2.4 MB)',
             isDone: true,
           ),
         ],
