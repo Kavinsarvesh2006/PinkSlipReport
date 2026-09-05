@@ -14,7 +14,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  final TextEditingController _emailController = TextEditingController(text: 'muthulakshmi.advisor@vsb.ac.in');
+  final TextEditingController _emailController = TextEditingController(text: 'velusamy.advisor@vsb.ac.in');
   final TextEditingController _passwordController = TextEditingController(text: '••••••••');
   bool _obscurePassword = true;
 
@@ -22,22 +22,26 @@ class _SignInScreenState extends State<SignInScreen> {
     final email = _emailController.text.trim().toLowerCase();
 
     UserProfile selectedProfile;
-    if (email.contains('manivannan')) {
-      selectedProfile = UserProfile.hodManivannanProfile;
-    } else if (email.contains('kavitha')) {
+    if (email.contains('kavitha')) {
       selectedProfile = UserProfile.hodKavithaProfile;
     } else if (email.contains('karthikeyan') || (email.contains('hod') && email.contains('viewer'))) {
       selectedProfile = UserProfile.hodViewerProfile;
-    } else if (email.contains('balamurugan') || email.contains('hod')) {
+    } else if (email.contains('manivannan') || email.contains('hod')) {
       selectedProfile = UserProfile.hodAdminProfile;
     } else if (email.contains('vishnupriya') || email.contains('sec_a') || email.contains('3a')) {
       selectedProfile = UserProfile.advisor3AProfile;
+    } else if (email.contains('murugesan') || email.contains('sec_b') || email.contains('3b')) {
+      selectedProfile = UserProfile.advisor3BProfile;
+    } else if (email.contains('bharathi') || email.contains('sec_c') || email.contains('3c')) {
+      selectedProfile = UserProfile.advisor3CProfile;
+    } else if (email.contains('velusamy') || email.contains('sec_d') || email.contains('3d')) {
+      selectedProfile = UserProfile.advisor3DProfile;
     } else if (email.contains('jenitta') || email.contains('rep')) {
       selectedProfile = UserProfile.classRepProfile;
     } else if (email.contains('student') || email.contains('lithesh')) {
       selectedProfile = UserProfile.studentProfile;
     } else {
-      selectedProfile = UserProfile.advisorProfile;
+      selectedProfile = UserProfile.advisor3DProfile;
     }
 
     AppStateManager.instance.loginWithProfile(selectedProfile);

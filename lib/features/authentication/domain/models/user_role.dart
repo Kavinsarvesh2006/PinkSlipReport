@@ -29,12 +29,12 @@ class UserProfile {
     this.isHodAdmin = false,
   });
 
-  // 1. Primary HOD - Full Authority (Can View All, Edit & Delete)
+  // 1. Primary Overall HOD - Dr. S. Manivannan (Full Authority)
   static const hodAdminProfile = UserProfile(
     id: 'HOD001',
-    name: 'Dr. R. Balamurugan',
-    email: 'balamurugan.hod@vsb.ac.in',
-    roleTitle: 'Head of Department (Admin)',
+    name: 'Dr. S. Manivannan',
+    email: 'manivannan.hod@vsb.ac.in',
+    roleTitle: 'Overall HOD (Admin)',
     year: 'All Years',
     section: 'All Sections',
     department: 'AI & DS',
@@ -45,9 +45,25 @@ class UserProfile {
     isHodAdmin: true,
   );
 
-  // 2. Secondary HOD - Read-Only Viewer (Can View All, Cannot Edit or Delete)
-  static const hodViewerProfile = UserProfile(
+  // 2. Year-Specific HOD - Mrs. Kavitha (1st & 2nd Year)
+  static const hodKavithaProfile = UserProfile(
     id: 'HOD002',
+    name: 'Mrs. Kavitha',
+    email: 'kavitha.hod@vsb.ac.in',
+    roleTitle: 'HOD (1st & 2nd Year)',
+    year: '1st & 2nd Year',
+    section: 'All Sections',
+    department: 'AI & DS',
+    college: 'V.S.B. Engineering College',
+    role: UserRole.hod,
+    canEdit: true,
+    canDelete: true,
+    isHodAdmin: true,
+  );
+
+  // 3. Associate HOD - Dr. S. Karthikeyan (Read-Only Viewer)
+  static const hodViewerProfile = UserProfile(
+    id: 'HOD003',
     name: 'Dr. S. Karthikeyan',
     email: 'karthikeyan.hod@vsb.ac.in',
     roleTitle: 'Associate HOD (Viewer)',
@@ -63,42 +79,27 @@ class UserProfile {
 
   // Default HOD profile for backward compatibility
   static const hodProfile = hodAdminProfile;
+  static const hodManivannanProfile = hodAdminProfile;
 
-  // 3. Overall HOD - Dr. Manivannan (Full Authority)
-  static const hodManivannanProfile = UserProfile(
-    id: 'HOD003',
-    name: 'Dr. S. Manivannan',
-    email: 'manivannan.hod@vsb.ac.in',
-    roleTitle: 'Overall HOD (Admin)',
-    year: 'All Years',
-    section: 'All Sections',
-    department: 'AI & DS',
-    college: 'V.S.B. Engineering College',
-    role: UserRole.hod,
-    canEdit: true,
-    canDelete: true,
-    isHodAdmin: true,
-  );
-
-  // 4. Year-Specific HOD - Mrs. Kavitha (1st & 2nd Year)
-  static const hodKavithaProfile = UserProfile(
-    id: 'HOD004',
-    name: 'Mrs. Kavitha',
-    email: 'kavitha.hod@vsb.ac.in',
-    roleTitle: 'HOD (1st & 2nd Year)',
-    year: '1st & 2nd Year',
-    section: 'All Sections',
-    department: 'AI & DS',
-    college: 'V.S.B. Engineering College',
-    role: UserRole.hod,
-    canEdit: true,
-    canDelete: true,
-    isHodAdmin: true,
-  );
-
-  // 3. Class Adviser - III Year Section B (Confidential to III-B)
-  static const advisorProfile = UserProfile(
+  // 4. Class Adviser - III Year Section A
+  static const advisor3AProfile = UserProfile(
     id: 'ADV001',
+    name: 'Ms. C. Vishnupriya [CV]',
+    email: 'vishnupriya.advisor@vsb.ac.in',
+    roleTitle: 'Class Adviser',
+    year: 'III Year',
+    section: 'Section A',
+    department: 'AI & DS',
+    college: 'V.S.B. Engineering College',
+    role: UserRole.advisor,
+    canEdit: true,
+    canDelete: false,
+    isHodAdmin: false,
+  );
+
+  // 5. Class Adviser - III Year Section B (Confidential to III-B)
+  static const advisorProfile = UserProfile(
+    id: 'ADV002',
     name: 'Dr. R. Murugesan [RM]',
     email: 'murugesan.advisor@vsb.ac.in',
     roleTitle: 'Class Adviser',
@@ -111,15 +112,32 @@ class UserProfile {
     canDelete: false,
     isHodAdmin: false,
   );
+  static const advisor3BProfile = advisorProfile;
 
-  // 4. Class Adviser - III Year Section A (Confidential to III-A)
-  static const advisor3AProfile = UserProfile(
-    id: 'ADV002',
-    name: 'Ms. C. Vishnupriya [CV]',
-    email: 'vishnupriya.advisor@vsb.ac.in',
+  // 6. Class Adviser - III Year Section C
+  static const advisor3CProfile = UserProfile(
+    id: 'ADV003',
+    name: 'Mrs. B. Bharathi [BB]',
+    email: 'bharathi.advisor@vsb.ac.in',
     roleTitle: 'Class Adviser',
     year: 'III Year',
-    section: 'Section A',
+    section: 'Section C',
+    department: 'AI & DS',
+    college: 'V.S.B. Engineering College',
+    role: UserRole.advisor,
+    canEdit: true,
+    canDelete: false,
+    isHodAdmin: false,
+  );
+
+  // 7. Class Adviser - III Year Section D
+  static const advisor3DProfile = UserProfile(
+    id: 'ADV004',
+    name: 'Mr. V. Velusamy [VV]',
+    email: 'velusamy.advisor@vsb.ac.in',
+    roleTitle: 'Class Adviser',
+    year: 'III Year',
+    section: 'Section D',
     department: 'AI & DS',
     college: 'V.S.B. Engineering College',
     role: UserRole.advisor,

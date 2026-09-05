@@ -421,7 +421,7 @@ class AppStateManager extends ChangeNotifier {
       );
     }).toList();
 
-    // Section D (III Year · Advisor: Ms. S. Muthulakshmi)
+    // Section D (III Year · Advisor: Mr. V. Velusamy)
     final secDNames = ['ANITHA K', 'BHARATH S', 'DEVIKA M', 'GOKULNATH R', 'HEMANTH P', 'JEEVAN T', 'KAVYA R'];
     final sectionD = secDNames.asMap().entries.map((entry) {
       final idx = entry.key + 1;
@@ -589,7 +589,7 @@ class AppStateManager extends ChangeNotifier {
           TimelineStage(
             title: 'HOD approval',
             when: 'Pending review',
-            note: 'Awaiting signature from Dr. R. Balamurugan.',
+            note: 'Awaiting signature from Dr. S. Manivannan.',
             isDone: false,
           ),
         ],
@@ -658,7 +658,7 @@ class AppStateManager extends ChangeNotifier {
       DepartmentSectionStat(
         year: 'III Year',
         section: 'Section D',
-        advisorName: 'Ms. S. Muthulakshmi [SM]',
+        advisorName: 'Mr. V. Velusamy [VV]',
         attendanceRate: 93.6,
         totalStudents: 58,
         pendingSlips: 2,
@@ -936,7 +936,7 @@ class AppStateManager extends ChangeNotifier {
       _roster[idx].hodSignedDate = '31 Aug 2026, 12:40 PM';
       _roster[idx].hodSignedDocumentName = 'HOD_Signed_OD_Permission_Order_${_roster[idx].rollNumber}.pdf';
       _roster[idx].hodRemarks = 'Permission officially granted with full duty attendance credit.';
-      _roster[idx].hodSigner = 'Dr. R. Balamurugan (HOD / AI&DS)';
+      _roster[idx].hodSigner = 'Dr. S. Manivannan (Overall HOD / AI&DS)';
       _roster[idx].letterApproved = true;
     }
 

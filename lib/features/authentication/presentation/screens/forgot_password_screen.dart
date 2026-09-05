@@ -10,7 +10,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _emailCtrl = TextEditingController(text: 'muthulakshmi.advisor@vsb.ac.in');
+  final _emailCtrl = TextEditingController(text: 'velusamy.advisor@vsb.ac.in');
   bool _isLoading = false;
 
   @override

@@ -488,7 +488,7 @@ class _HodDashboardScreenState extends State<HodDashboardScreen> {
                                             ),
                                             child: Center(
                                               child: Text(
-                                                '🔒 Read-Only: Approval actions reserved for Primary HOD Dr. R. Balamurugan',
+                                                '🔒 Read-Only: Approval actions reserved for Primary HOD Dr. S. Manivannan',
                                                 style: AppTheme.inter(fontSize: 11, color: AppTheme.ink600),
                                               ),
                                             ),

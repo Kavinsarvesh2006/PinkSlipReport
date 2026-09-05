@@ -37,7 +37,7 @@ class _PhotoAttendanceReviewScreenState extends State<PhotoAttendanceReviewScree
             const SizedBox(width: 10),
             Expanded(
               child: Text(
-                'Class photo & attendance report forwarded to HOD (Dr. R. Balamurugan)!',
+                'Class photo & attendance report forwarded to HOD (Dr. S. Manivannan)!',
                 style: AppTheme.inter(fontSize: 12.5, fontWeight: FontWeight.w600, color: Colors.white),
               ),
             ),

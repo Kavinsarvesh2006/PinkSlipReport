@@ -366,7 +366,7 @@ class PinkSlipDetailScreen extends StatelessWidget {
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
-                        'Read-Only View: Approvals & edits can only be performed by Primary HOD (Dr. R. Balamurugan) or the designated Section Class Advisor.',
+                        'Read-Only View: Approvals & edits can only be performed by Primary HOD (Dr. S. Manivannan) or the designated Section Class Advisor.',
                         style: AppTheme.inter(fontSize: 12, fontWeight: FontWeight.w600, color: AppTheme.ink600),
                       ),
                     ),
