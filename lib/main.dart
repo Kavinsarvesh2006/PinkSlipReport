@@ -52,7 +52,12 @@ class MainRouterScreen extends StatelessWidget {
     return ListenableBuilder(
       listenable: AppStateManager.instance,
       builder: (context, _) {
-        final role = AppStateManager.instance.currentRole;
+        final state = AppStateManager.instance;
+        if (!state.isAuthenticated) {
+          return const SignInScreen();
+        }
+
+        final role = state.currentRole;
         switch (role) {
           case UserRole.advisor:
           case UserRole.classRep:

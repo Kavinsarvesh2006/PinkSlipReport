@@ -52,16 +52,14 @@ class AppStateManager extends ChangeNotifier {
     _initData();
   }
 
-  // Active User Profile & Role
+  // Active User Profile & Authentication State
+  bool _isAuthenticated = false;
+  bool get isAuthenticated => _isAuthenticated;
+
   UserProfile _currentUserProfile = UserProfile.advisorProfile;
   UserProfile get currentProfile => _currentUserProfile;
   UserProfile get currentUserProfile => _currentUserProfile;
   UserRole get currentRole => _currentUserProfile.role;
-
-  set currentUserProfile(UserProfile profile) {
-    _currentUserProfile = profile;
-    notifyListeners();
-  }
 
   // Permissions & Authority
   bool get canCurrentUserEdit => _currentUserProfile.canEdit;
@@ -71,32 +69,16 @@ class AppStateManager extends ChangeNotifier {
   bool get isClassAdvisor => _currentUserProfile.role == UserRole.advisor;
   bool get isClassRep => _currentUserProfile.role == UserRole.classRep;
 
-  // Single Login authentication methods
+  // Single Login authentication methods (No in-dashboard role switching allowed)
   void loginWithProfile(UserProfile profile) {
     _currentUserProfile = profile;
+    _isAuthenticated = true;
     notifyListeners();
   }
 
   void logout() {
+    _isAuthenticated = false;
     _currentUserProfile = UserProfile.advisorProfile;
-    notifyListeners();
-  }
-
-  void switchRole(UserRole role) {
-    switch (role) {
-      case UserRole.advisor:
-        _currentUserProfile = UserProfile.advisorProfile;
-        break;
-      case UserRole.classRep:
-        _currentUserProfile = UserProfile.classRepProfile;
-        break;
-      case UserRole.hod:
-        _currentUserProfile = UserProfile.hodAdminProfile;
-        break;
-      case UserRole.student:
-        _currentUserProfile = UserProfile.studentProfile;
-        break;
-    }
     notifyListeners();
   }
 
