@@ -12,20 +12,13 @@ class HodPhotoAuditScreen extends StatefulWidget {
 }
 
 class _HodPhotoAuditScreenState extends State<HodPhotoAuditScreen> {
-  int _selectedYearIndex = 0; // All
-  final List<String> _years = ['All Years', '1st Year', '2nd Year', '3rd Year', '4th Year'];
-
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
       listenable: AppStateManager.instance,
       builder: (context, _) {
         final state = AppStateManager.instance;
-        final filterYear = _years[_selectedYearIndex];
-        final photos = state.classSessionPhotos.where((p) {
-          if (filterYear != 'All Years' && p.year != filterYear) return false;
-          return true;
-        }).toList();
+        final photos = state.classSessionPhotos;
 
         return Scaffold(
           backgroundColor: AppTheme.lavenderBg,
@@ -48,42 +41,6 @@ class _HodPhotoAuditScreenState extends State<HodPhotoAuditScreen> {
                 isHod: true,
                 text: 'HOD Audit: Verify camera face recognition across all department sections',
               ),
-
-              // Year Filter Chips
-              SizedBox(
-                height: 38,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  itemCount: _years.length,
-                  itemBuilder: (context, index) {
-                    final isSel = _selectedYearIndex == index;
-                    return GestureDetector(
-                      onTap: () => setState(() => _selectedYearIndex = index),
-                      child: Container(
-                        margin: const EdgeInsets.only(right: 8),
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: isSel ? AppTheme.violet600 : Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: isSel ? AppTheme.violet600 : AppTheme.line),
-                        ),
-                        child: Center(
-                          child: Text(
-                            _years[index],
-                            style: AppTheme.inter(
-                              fontSize: 11.5,
-                              fontWeight: FontWeight.w600,
-                              color: isSel ? Colors.white : AppTheme.ink600,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-              const SizedBox(height: 12),
 
               // Photos Feed
               Expanded(

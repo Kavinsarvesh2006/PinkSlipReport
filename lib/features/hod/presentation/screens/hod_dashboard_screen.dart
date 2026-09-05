@@ -24,12 +24,6 @@ class HodDashboardScreen extends StatefulWidget {
 }
 
 class _HodDashboardScreenState extends State<HodDashboardScreen> {
-  int _selectedYearIndex = 1;
-  int _selectedSectionIndex = 1;
-
-  final List<String> _years = ['1st year', '2nd year', '3rd year', '4th year'];
-  final List<String> _sections = ['A', 'B', 'C', 'D'];
-
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -224,81 +218,6 @@ class _HodDashboardScreenState extends State<HodDashboardScreen> {
                               iconBgColor: AppTheme.pink100,
                             ),
                           ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 22, 20, 10),
-                        child: Text(
-                          'Browse by Year & Section',
-                          style: AppTheme.poppins(fontSize: 16, fontWeight: FontWeight.w700, color: AppTheme.ink900),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 38,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          itemCount: _years.length,
-                          itemBuilder: (context, index) {
-                            final isSel = _selectedYearIndex == index;
-                            return GestureDetector(
-                              onTap: () => setState(() => _selectedYearIndex = index),
-                              child: Container(
-                                margin: const EdgeInsets.only(right: 8),
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                                decoration: BoxDecoration(
-                                  color: isSel ? AppTheme.violet600 : Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                  border: Border.all(color: isSel ? AppTheme.violet600 : AppTheme.line),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    _years[index],
-                                    style: AppTheme.inter(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      color: isSel ? Colors.white : AppTheme.ink600,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      SizedBox(
-                        height: 38,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          itemCount: _selectedYearIndex == 3 ? 2 : 4,
-                          itemBuilder: (context, index) {
-                            final isSel = _selectedSectionIndex == index;
-                            return GestureDetector(
-                              onTap: () => setState(() => _selectedSectionIndex = index),
-                              child: Container(
-                                width: 38,
-                                height: 38,
-                                margin: const EdgeInsets.only(right: 8),
-                                decoration: BoxDecoration(
-                                  color: isSel ? AppTheme.violet600 : AppTheme.violet50,
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(color: isSel ? AppTheme.violet600 : AppTheme.violet100),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    _sections[index],
-                                    style: AppTheme.inter(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w700,
-                                      color: isSel ? Colors.white : AppTheme.violet700,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
                         ),
                       ),
                       Padding(

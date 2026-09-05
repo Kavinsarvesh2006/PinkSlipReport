@@ -169,152 +169,49 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  const Expanded(child: Divider(color: AppTheme.line)),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text('INSTITUTIONAL LOGIN PERSONAS', style: AppTheme.inter(fontSize: 10.5, fontWeight: FontWeight.w700, color: AppTheme.ink400, letterSpacing: 0.5)),
-                  ),
-                  const Expanded(child: Divider(color: AppTheme.line)),
-                ],
-              ),
-              const SizedBox(height: 14),
-              // Persona Quick Logins
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: [
-                  _QuickPersonaBtn(
-                    roleBadge: 'HOD [ADMIN]',
-                    title: 'Dr. R. Balamurugan',
-                    subtitle: 'All Years · Full Authority (Edit & Delete)',
-                    badgeColor: const Color(0xFFDC2626),
-                    onTap: () {
-                      _emailController.text = 'balamurugan.hod@vsb.ac.in';
-                      _handleLogin();
-                    },
-                  ),
-                  _QuickPersonaBtn(
-                    roleBadge: 'HOD [VIEWER]',
-                    title: 'Dr. S. Karthikeyan',
-                    subtitle: 'All Years · Read-Only (Cannot Edit/Delete)',
-                    badgeColor: const Color(0xFF2563EB),
-                    onTap: () {
-                      _emailController.text = 'karthikeyan.hod@vsb.ac.in';
-                      _handleLogin();
-                    },
-                  ),
-                  _QuickPersonaBtn(
-                    roleBadge: 'ADVISER III-B',
-                    title: 'Dr. R. Murugesan [RM]',
-                    subtitle: 'III Year Sec B · Scoped Confidential Data',
-                    badgeColor: AppTheme.violet600,
-                    onTap: () {
-                      _emailController.text = 'murugesan.advisor@vsb.ac.in';
-                      _handleLogin();
-                    },
-                  ),
-                  _QuickPersonaBtn(
-                    roleBadge: 'ADVISER III-A',
-                    title: 'Ms. C. Vishnupriya [CV]',
-                    subtitle: 'III Year Sec A · Scoped Confidential Data',
-                    badgeColor: AppTheme.violet600,
-                    onTap: () {
-                      _emailController.text = 'vishnupriya.advisor@vsb.ac.in';
-                      _handleLogin();
-                    },
-                  ),
-                  _QuickPersonaBtn(
-                    roleBadge: 'CLASS REP III-B',
-                    title: 'Jenitta Blessy S',
-                    subtitle: 'III Year Sec B · Attendance Assistant',
-                    badgeColor: const Color(0xFF059669),
-                    onTap: () {
-                      _emailController.text = 'jenitta.rep@vsb.ac.in';
-                      _handleLogin();
-                    },
-                  ),
-                  _QuickPersonaBtn(
-                    roleBadge: 'STUDENT',
-                    title: 'Lithesh Hari R',
-                    subtitle: 'Individual Student Attendance View',
-                    badgeColor: const Color(0xFFD97706),
-                    onTap: () {
-                      _emailController.text = 'lithesh.student@vsb.ac.in';
-                      _handleLogin();
-                    },
-                  ),
-                ],
+              const SizedBox(height: 32),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: AppTheme.line),
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: AppTheme.violet50,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(
+                        child: Icon(Icons.verified_user_rounded, size: 22, color: AppTheme.violet600),
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Institutional Single Login Portal',
+                            style: AppTheme.inter(fontSize: 12, fontWeight: FontWeight.w700, color: AppTheme.ink900),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            'Each user is granted isolated access strictly to their assigned class and authority scope. Profile switching is blocked.',
+                            style: AppTheme.inter(fontSize: 11, color: AppTheme.ink600, height: 1.3),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class _QuickPersonaBtn extends StatelessWidget {
-  final String roleBadge;
-  final String title;
-  final String subtitle;
-  final Color badgeColor;
-  final VoidCallback onTap;
-
-  const _QuickPersonaBtn({
-    required this.roleBadge,
-    required this.title,
-    required this.subtitle,
-    required this.badgeColor,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: AppTheme.line),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.02),
-              blurRadius: 6,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              decoration: BoxDecoration(
-                color: badgeColor.withValues(alpha: 0.12),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                roleBadge,
-                style: AppTheme.inter(fontSize: 10, fontWeight: FontWeight.w800, color: badgeColor),
-              ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: AppTheme.inter(fontSize: 12.5, fontWeight: FontWeight.w700, color: AppTheme.ink900)),
-                  Text(subtitle, style: AppTheme.inter(fontSize: 10.5, color: AppTheme.ink600)),
-                ],
-              ),
-            ),
-            const Icon(Icons.arrow_forward_ios_rounded, size: 13, color: AppTheme.ink400),
-          ],
         ),
       ),
     );
