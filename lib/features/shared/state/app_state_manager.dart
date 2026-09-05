@@ -53,10 +53,10 @@ class AppStateManager extends ChangeNotifier {
   }
 
   // Active User Profile & Authentication State
-  bool _isAuthenticated = false;
+  bool _isAuthenticated = true;
   bool get isAuthenticated => _isAuthenticated;
 
-  UserProfile _currentUserProfile = UserProfile.advisorProfile;
+  UserProfile _currentUserProfile = UserProfile.hodManivannanProfile;
   UserProfile get currentProfile => _currentUserProfile;
   UserProfile get currentUserProfile => _currentUserProfile;
   UserRole get currentRole => _currentUserProfile.role;

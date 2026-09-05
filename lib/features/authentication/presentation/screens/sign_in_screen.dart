@@ -22,7 +22,11 @@ class _SignInScreenState extends State<SignInScreen> {
     final email = _emailController.text.trim().toLowerCase();
 
     UserProfile selectedProfile;
-    if (email.contains('karthikeyan') || (email.contains('hod') && email.contains('viewer'))) {
+    if (email.contains('manivannan')) {
+      selectedProfile = UserProfile.hodManivannanProfile;
+    } else if (email.contains('kavitha')) {
+      selectedProfile = UserProfile.hodKavithaProfile;
+    } else if (email.contains('karthikeyan') || (email.contains('hod') && email.contains('viewer'))) {
       selectedProfile = UserProfile.hodViewerProfile;
     } else if (email.contains('balamurugan') || email.contains('hod')) {
       selectedProfile = UserProfile.hodAdminProfile;

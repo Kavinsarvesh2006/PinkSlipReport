@@ -64,6 +64,38 @@ class UserProfile {
   // Default HOD profile for backward compatibility
   static const hodProfile = hodAdminProfile;
 
+  // 3. Overall HOD - Dr. Manivannan (Full Authority)
+  static const hodManivannanProfile = UserProfile(
+    id: 'HOD003',
+    name: 'Dr. S. Manivannan',
+    email: 'manivannan.hod@vsb.ac.in',
+    roleTitle: 'Overall HOD (Admin)',
+    year: 'All Years',
+    section: 'All Sections',
+    department: 'AI & DS',
+    college: 'V.S.B. Engineering College',
+    role: UserRole.hod,
+    canEdit: true,
+    canDelete: true,
+    isHodAdmin: true,
+  );
+
+  // 4. Year-Specific HOD - Mrs. Kavitha (1st & 2nd Year)
+  static const hodKavithaProfile = UserProfile(
+    id: 'HOD004',
+    name: 'Mrs. Kavitha',
+    email: 'kavitha.hod@vsb.ac.in',
+    roleTitle: 'HOD (1st & 2nd Year)',
+    year: '1st & 2nd Year',
+    section: 'All Sections',
+    department: 'AI & DS',
+    college: 'V.S.B. Engineering College',
+    role: UserRole.hod,
+    canEdit: true,
+    canDelete: true,
+    isHodAdmin: true,
+  );
+
   // 3. Class Adviser - III Year Section B (Confidential to III-B)
   static const advisorProfile = UserProfile(
     id: 'ADV001',
