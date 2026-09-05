@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../shared/state/app_state_manager.dart';
+import '../../../authentication/domain/models/user_role.dart';
 import '../../../shared/widgets/app_header.dart';
 import '../../../shared/widgets/metric_card.dart';
 import '../../../shared/widgets/pipeline_stepper.dart';
@@ -25,6 +26,42 @@ class AdvisorDashboardScreen extends StatelessWidget {
       listenable: AppStateManager.instance,
       builder: (context, _) {
         final state = AppStateManager.instance;
+        if (!state.isAuthenticated || (state.currentRole != UserRole.advisor && state.currentRole != UserRole.classRep)) {
+          return Scaffold(
+            backgroundColor: AppTheme.lavenderBg,
+            appBar: AppBar(
+              backgroundColor: AppTheme.lavenderBg,
+              elevation: 0,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 18, color: AppTheme.ink900),
+                onPressed: () => Navigator.pushReplacementNamed(context, '/sign-in'),
+              ),
+              title: Text('Access Restricted', style: AppTheme.poppins(fontSize: 16, fontWeight: FontWeight.w700)),
+            ),
+            body: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.lock_person_rounded, size: 54, color: AppTheme.pink500),
+                    const SizedBox(height: 16),
+                    Text('Adviser Authorization Required', style: AppTheme.poppins(fontSize: 16, fontWeight: FontWeight.w700, color: AppTheme.ink900)),
+                    const SizedBox(height: 8),
+                    Text('This dashboard is restricted strictly to authenticated Class Adviser & Representative accounts.', textAlign: TextAlign.center, style: AppTheme.inter(fontSize: 12.5, color: AppTheme.ink600)),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () => Navigator.pushReplacementNamed(context, '/sign-in'),
+                      style: ElevatedButton.styleFrom(backgroundColor: AppTheme.violet600, foregroundColor: Colors.white),
+                      child: const Text('Return to Sign In'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        }
+
         final profile = state.currentProfile;
         final slips = state.scopedPinkSlips;
 

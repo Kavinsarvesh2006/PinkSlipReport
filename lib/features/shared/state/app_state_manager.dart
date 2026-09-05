@@ -881,25 +881,45 @@ class AppStateManager extends ChangeNotifier {
   }
 
   void approvePinkSlip(String slipId) {
+    if (!isAuthenticated) return;
     if (!canCurrentUserEdit && !isHodAdmin) return;
     final idx = _pinkSlips.indexWhere((s) => s.id == slipId);
     if (idx != -1) {
+      final slip = _pinkSlips[idx];
+      // If advisor/classRep, ensure the slip belongs to their own year & section
+      if (currentRole == UserRole.advisor || currentRole == UserRole.classRep) {
+        if (!slip.section.contains(_currentUserProfile.section.replaceAll('Section ', 'Sec'))) {
+          if (!slip.section.contains(_currentUserProfile.section)) {
+            return; // Block cross-section approval
+          }
+        }
+      }
       _pinkSlips[idx].status = SlipStatus.approved;
       notifyListeners();
     }
   }
 
   void rejectPinkSlip(String slipId) {
+    if (!isAuthenticated) return;
     if (!canCurrentUserEdit && !isHodAdmin) return;
     final idx = _pinkSlips.indexWhere((s) => s.id == slipId);
     if (idx != -1) {
+      final slip = _pinkSlips[idx];
+      // If advisor/classRep, ensure the slip belongs to their own year & section
+      if (currentRole == UserRole.advisor || currentRole == UserRole.classRep) {
+        if (!slip.section.contains(_currentUserProfile.section.replaceAll('Section ', 'Sec'))) {
+          if (!slip.section.contains(_currentUserProfile.section)) {
+            return; // Block cross-section rejection
+          }
+        }
+      }
       _pinkSlips[idx].status = SlipStatus.rejected;
       notifyListeners();
     }
   }
 
   void approveAllHod() {
-    if (!isHodAdmin) return; // Only Primary HOD can approve all
+    if (!isAuthenticated || !isHodAdmin) return; // Only Primary HOD can approve all
     for (var slip in _pinkSlips) {
       if (slip.status == SlipStatus.hodReview) {
         slip.status = SlipStatus.approved;
@@ -909,7 +929,7 @@ class AppStateManager extends ChangeNotifier {
   }
 
   void signOdPermission(String studentId) {
-    if (!isHodAdmin) return; // Only Primary HOD can sign OD orders
+    if (!isAuthenticated || !isHodAdmin) return; // Only Primary HOD can sign OD orders
     final idx = _roster.indexWhere((s) => s.id == studentId || s.rollNumber == studentId);
     if (idx != -1) {
       _roster[idx].isHodSigned = true;
@@ -994,15 +1014,23 @@ class AppStateManager extends ChangeNotifier {
   }
 
   void toggleStudentAttendance(String studentId, AttendanceStatus newStatus) {
+    if (!isAuthenticated) return;
     if (!canCurrentUserEdit && !isHodAdmin) return;
     final idx = _roster.indexWhere((s) => s.id == studentId);
     if (idx != -1) {
+      // If advisor/classRep, ensure the student is in their own section
+      if (currentRole == UserRole.advisor || currentRole == UserRole.classRep) {
+        if (_roster[idx].section != _currentUserProfile.section) {
+          return; // Block editing attendance of another section
+        }
+      }
       _roster[idx].status = newStatus;
       notifyListeners();
     }
   }
 
   void markAllPresent() {
+    if (!isAuthenticated) return;
     if (!canCurrentUserEdit && !isHodAdmin) return;
     for (var student in scopedRoster) {
       student.status = AttendanceStatus.present;
@@ -1011,11 +1039,13 @@ class AppStateManager extends ChangeNotifier {
   }
 
   void addClassSessionPhoto(ClassSessionPhoto session) {
+    if (!isAuthenticated) return;
     _classSessionPhotos.insert(0, session);
     notifyListeners();
   }
 
   void updateClassSessionPhoto(ClassSessionPhoto session) {
+    if (!isAuthenticated) return;
     final idx = _classSessionPhotos.indexWhere((s) => s.id == session.id);
     if (idx != -1) {
       _classSessionPhotos[idx] = session;
@@ -1024,7 +1054,7 @@ class AppStateManager extends ChangeNotifier {
   }
 
   void approveClassPhotoReportByHod(String sessionId) {
-    if (!isHodAdmin) return; // Only Primary HOD can approve photo audit
+    if (!isAuthenticated || !isHodAdmin) return; // Only Primary HOD can approve photo audit
     final idx = _classSessionPhotos.indexWhere((s) => s.id == sessionId);
     if (idx != -1) {
       _classSessionPhotos[idx] = _classSessionPhotos[idx].copyWith(hodApproved: true);
@@ -1033,7 +1063,7 @@ class AppStateManager extends ChangeNotifier {
   }
 
   void deleteBiometricRecord(String punchId) {
-    if (!canCurrentUserDelete) return; // Only Primary HOD can delete
+    if (!isAuthenticated || !canCurrentUserDelete) return; // Only Primary HOD can delete
     _biometricPunches.removeWhere((p) => p.id == punchId);
     notifyListeners();
   }
