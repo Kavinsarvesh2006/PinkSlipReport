@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/theme/app_theme.dart';
+import '../../../shared/state/app_state_manager.dart';
 
 class IssuePinkSlipModal extends StatefulWidget {
   const IssuePinkSlipModal({super.key});
@@ -9,17 +10,9 @@ class IssuePinkSlipModal extends StatefulWidget {
 }
 
 class _IssuePinkSlipModalState extends State<IssuePinkSlipModal> {
-  String _selectedStudent = 'Lithesh Hari R (25243100)';
+  String? _selectedStudent;
   String _selectedReason = 'Uninformed Absence';
   final TextEditingController _notesController = TextEditingController();
-
-  final List<String> _students = [
-    'Lithesh Hari R (25243100)',
-    'Manikandan M (25243113)',
-    'Janani Y (25243068)',
-    'Deepika S (25243044)',
-    'Dinesh Kumar P (25243050)',
-  ];
 
   final List<String> _reasons = [
     'Uninformed Absence',
@@ -31,6 +24,16 @@ class _IssuePinkSlipModalState extends State<IssuePinkSlipModal> {
 
   @override
   Widget build(BuildContext context) {
+    final state = AppStateManager.instance;
+    final scopedRoster = state.scopedRoster;
+    final studentList = scopedRoster.isNotEmpty
+        ? scopedRoster.map((s) => '${s.name} (${s.rollNumber})').toList()
+        : state.roster.map((s) => '${s.name} (${s.rollNumber})').toList();
+
+    if (_selectedStudent == null || !studentList.contains(_selectedStudent)) {
+      _selectedStudent = studentList.isNotEmpty ? studentList.first : 'No students found';
+    }
+
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -63,7 +66,7 @@ class _IssuePinkSlipModalState extends State<IssuePinkSlipModal> {
           ),
           const SizedBox(height: 4),
           Text(
-            'Issue an official notice or leave justification request',
+            'Issue an official notice or leave justification request (${state.currentProfile.year} · ${state.currentProfile.section})',
             style: AppTheme.inter(fontSize: 12, color: AppTheme.ink600),
           ),
           const SizedBox(height: 20),
@@ -81,8 +84,8 @@ class _IssuePinkSlipModalState extends State<IssuePinkSlipModal> {
               child: DropdownButton<String>(
                 value: _selectedStudent,
                 isExpanded: true,
-                items: _students.map((s) => DropdownMenuItem(value: s, child: Text(s, style: AppTheme.inter(fontSize: 13, color: AppTheme.ink900)))).toList(),
-                onChanged: (v) => setState(() => _selectedStudent = v!),
+                items: studentList.map((s) => DropdownMenuItem(value: s, child: Text(s, style: AppTheme.inter(fontSize: 13, color: AppTheme.ink900)))).toList(),
+                onChanged: (v) => setState(() => _selectedStudent = v),
               ),
             ),
           ),

@@ -88,7 +88,7 @@ class _ApplyOdModalState extends State<ApplyOdModal> {
   @override
   Widget build(BuildContext context) {
     final state = AppStateManager.instance;
-    final roster = state.roster;
+    final roster = state.scopedRoster.isNotEmpty ? state.scopedRoster : state.roster;
 
     return Container(
       decoration: const BoxDecoration(
