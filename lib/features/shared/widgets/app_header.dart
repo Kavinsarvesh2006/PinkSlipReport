@@ -25,34 +25,49 @@ class AppHeader extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Brand Logo & Text
+              // SmartPro Brand Logo & Typography
               Row(
                 children: [
                   Container(
-                    width: 28,
-                    height: 28,
+                    width: 32,
+                    height: 32,
                     decoration: BoxDecoration(
-                      gradient: AppTheme.brandIconGradient,
-                      borderRadius: BorderRadius.circular(8),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF6366F1), Color(0xFF8B5CF6), Color(0xFF3B82F6)],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
                       boxShadow: [
                         BoxShadow(
-                          color: AppTheme.violet600.withValues(alpha: 0.25),
-                          blurRadius: 6,
-                          offset: const Offset(0, 2),
+                          color: const Color(0xFF6366F1).withValues(alpha: 0.35),
+                          blurRadius: 8,
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
-                    child: const Center(
-                      child: Icon(Icons.description_outlined, size: 16, color: Colors.white),
+                    child: Center(
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Icon(Icons.bolt_rounded, size: 20, color: Colors.white.withValues(alpha: 0.95)),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 9),
                   RichText(
                     text: TextSpan(
-                      style: AppTheme.poppins(fontSize: 17, fontWeight: FontWeight.w700, color: AppTheme.ink900),
-                      children: const [
-                        TextSpan(text: 'PinkSlip'),
-                        TextSpan(text: 'Report', style: TextStyle(color: AppTheme.violet600)),
+                      style: AppTheme.poppins(fontSize: 18, fontWeight: FontWeight.w800, color: AppTheme.ink900, letterSpacing: -0.3),
+                      children: [
+                        const TextSpan(text: 'Smart'),
+                        TextSpan(
+                          text: 'Pro',
+                          style: TextStyle(
+                            color: AppTheme.violet600,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -438,17 +438,62 @@ class AppStateManager extends ChangeNotifier {
     }).toList();
 
     // 2nd Year Section A
-    final sec2ANames = ['ADITYA S', 'DIVESH K', 'HARISH M', 'KAVIN P', 'MEERA S', 'NITHISH R', 'PRAVEEN V'];
+    final sec2ANames = ['ADITYA S', 'DIVESH K', 'HARISH M', 'KAVIN P', 'MEERA S', 'NITHISH R', 'PRAVEEN V', 'SWETHA R'];
     final section2A = sec2ANames.asMap().entries.map((entry) {
       final idx = entry.key + 1;
       return StudentRecord(
         id: 'STU-2A-$idx',
         name: entry.value,
         rollNumber: '92252524300$idx',
-        year: '2nd year',
+        year: 'II Year',
         section: 'Section A',
         status: AttendanceStatus.present,
         biometricTime: '08:47 AM',
+      );
+    }).toList();
+
+    // 2nd Year Section B
+    final sec2BNames = ['ABINAYA T', 'BALAJI K', 'DHANUSH R', 'GOWTHAM V', 'JAYASHREE S', 'MANOJ P', 'RAGUL M'];
+    final section2B = sec2BNames.asMap().entries.map((entry) {
+      final idx = entry.key + 1;
+      return StudentRecord(
+        id: 'STU-2B-$idx',
+        name: entry.value,
+        rollNumber: '92252524310$idx',
+        year: 'II Year',
+        section: 'Section B',
+        status: AttendanceStatus.present,
+        biometricTime: '08:49 AM',
+      );
+    }).toList();
+
+    // 2nd Year Section C
+    final sec2CNames = ['ARUN PRASAD S', 'DEVIKA R', 'GOKUL S', 'KAVIN RAJ N', 'POOJA M', 'SANTHOSH K'];
+    final section2C = sec2CNames.asMap().entries.map((entry) {
+      final idx = entry.key + 1;
+      return StudentRecord(
+        id: 'STU-2C-$idx',
+        name: entry.value,
+        rollNumber: '92252524320$idx',
+        year: 'II Year',
+        section: 'Section C',
+        status: AttendanceStatus.present,
+        biometricTime: '08:46 AM',
+      );
+    }).toList();
+
+    // 2nd Year Section D
+    final sec2DNames = ['AJITH KUMAR T', 'BHUVANA S', 'DINESH M', 'JANANI P', 'MUKESH R', 'SURYA K'];
+    final section2D = sec2DNames.asMap().entries.map((entry) {
+      final idx = entry.key + 1;
+      return StudentRecord(
+        id: 'STU-2D-$idx',
+        name: entry.value,
+        rollNumber: '92252524330$idx',
+        year: 'II Year',
+        section: 'Section D',
+        status: AttendanceStatus.present,
+        biometricTime: '08:48 AM',
       );
     }).toList();
 
@@ -488,6 +533,9 @@ class AppStateManager extends ChangeNotifier {
       ...sectionC,
       ...sectionD,
       ...section2A,
+      ...section2B,
+      ...section2C,
+      ...section2D,
       ...section4A,
       ...section1A,
     ];
@@ -628,6 +676,7 @@ class AppStateManager extends ChangeNotifier {
     ];
 
     _sections = const [
+      // 3rd Year Sections
       DepartmentSectionStat(
         year: 'III Year',
         section: 'Section B',
@@ -663,6 +712,43 @@ class AppStateManager extends ChangeNotifier {
         totalStudents: 58,
         pendingSlips: 2,
         roomName: 'MB III A-204',
+      ),
+      // 2nd Year Sections
+      DepartmentSectionStat(
+        year: 'II Year',
+        section: 'Section A',
+        advisorName: 'Mr. P. Prakash [PP]',
+        attendanceRate: 96.2,
+        totalStudents: 56,
+        pendingSlips: 1,
+        roomName: 'MB II A-101',
+      ),
+      DepartmentSectionStat(
+        year: 'II Year',
+        section: 'Section B',
+        advisorName: 'Mrs. M. Sivagami [MS]',
+        attendanceRate: 94.8,
+        totalStudents: 58,
+        pendingSlips: 2,
+        roomName: 'MB II A-102',
+      ),
+      DepartmentSectionStat(
+        year: 'II Year',
+        section: 'Section C',
+        advisorName: 'Mr. D. Baskar [DB]',
+        attendanceRate: 92.5,
+        totalStudents: 55,
+        pendingSlips: 1,
+        roomName: 'MB II A-103',
+      ),
+      DepartmentSectionStat(
+        year: 'II Year',
+        section: 'Section D',
+        advisorName: 'Mrs. K. Deepa [KD]',
+        attendanceRate: 95.1,
+        totalStudents: 57,
+        pendingSlips: 2,
+        roomName: 'MB II A-104',
       ),
     ];
 

@@ -26,6 +26,16 @@ class _SignInScreenState extends State<SignInScreen> {
       selectedProfile = UserProfile.hodKavithaProfile;
     } else if (email.contains('manivannan') || email.contains('hod')) {
       selectedProfile = UserProfile.hodAdminProfile;
+    // 2nd Year Class Advisers
+    } else if (email.contains('prakash') || email.contains('sec_2a') || email.contains('2a')) {
+      selectedProfile = UserProfile.advisor2AProfile;
+    } else if (email.contains('sivagami') || email.contains('sec_2b') || email.contains('2b')) {
+      selectedProfile = UserProfile.advisor2BProfile;
+    } else if (email.contains('baskar') || email.contains('sec_2c') || email.contains('2c')) {
+      selectedProfile = UserProfile.advisor2CProfile;
+    } else if (email.contains('deepa') || email.contains('sec_2d') || email.contains('2d')) {
+      selectedProfile = UserProfile.advisor2DProfile;
+    // 3rd Year Class Advisers
     } else if (email.contains('vishnupriya') || email.contains('sec_a') || email.contains('3a')) {
       selectedProfile = UserProfile.advisor3AProfile;
     } else if (email.contains('murugesan') || email.contains('sec_b') || email.contains('3b')) {
@@ -34,8 +44,13 @@ class _SignInScreenState extends State<SignInScreen> {
       selectedProfile = UserProfile.advisor3CProfile;
     } else if (email.contains('velusamy') || email.contains('sec_d') || email.contains('3d')) {
       selectedProfile = UserProfile.advisor3DProfile;
+    // Reps & Students
+    } else if (email.contains('aditya')) {
+      selectedProfile = UserProfile.classRep2AProfile;
     } else if (email.contains('jenitta') || email.contains('rep')) {
       selectedProfile = UserProfile.classRepProfile;
+    } else if (email.contains('divesh')) {
+      selectedProfile = UserProfile.student2AProfile;
     } else if (email.contains('student') || email.contains('lithesh')) {
       selectedProfile = UserProfile.studentProfile;
     } else {
@@ -63,31 +78,72 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Column(
             children: [
               const SizedBox(height: 16),
+              // Unique Stylish SmartPro Brand Logo
               Container(
-                width: 56,
-                height: 56,
+                width: 68,
+                height: 68,
                 decoration: BoxDecoration(
-                  color: AppTheme.violet100,
-                  borderRadius: BorderRadius.circular(18),
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF4F46E5), Color(0xFF7C3AED), Color(0xFF2563EB)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(22),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF7C3AED).withValues(alpha: 0.4),
+                      blurRadius: 20,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
                 ),
-                child: const Center(
-                  child: Icon(Icons.shield_outlined, size: 28, color: AppTheme.violet600),
+                child: Center(
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        width: 44,
+                        height: 44,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.white.withValues(alpha: 0.25), width: 2),
+                        ),
+                      ),
+                      const Icon(Icons.bolt_rounded, size: 34, color: Colors.white),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 14),
               RichText(
                 text: TextSpan(
-                  style: AppTheme.poppins(fontSize: 22, fontWeight: FontWeight.w700, color: AppTheme.ink900),
-                  children: const [
-                    TextSpan(text: 'PinkSlip'),
-                    TextSpan(text: 'Report', style: TextStyle(color: AppTheme.violet600)),
+                  style: AppTheme.poppins(fontSize: 26, fontWeight: FontWeight.w800, color: AppTheme.ink900, letterSpacing: -0.5),
+                  children: [
+                    const TextSpan(text: 'Smart'),
+                    TextSpan(
+                      text: 'Pro',
+                      style: TextStyle(
+                        color: AppTheme.violet600,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
                   ],
                 ),
               ),
               const SizedBox(height: 6),
-              Text('Single Secure Login System', style: AppTheme.inter(fontSize: 13, fontWeight: FontWeight.w600, color: AppTheme.violet700)),
-              const SizedBox(height: 4),
-              Text('Enter your credentials to access your scoped dashboard', style: AppTheme.inter(fontSize: 12, color: AppTheme.ink600), textAlign: TextAlign.center),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                decoration: BoxDecoration(
+                  color: AppTheme.violet100,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  'INSTITUTIONAL WORKFLOW PORTAL',
+                  style: AppTheme.inter(fontSize: 10, fontWeight: FontWeight.w800, color: AppTheme.violet700, letterSpacing: 0.5),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text('Single Secure Login System · Scoped Session Protection', style: AppTheme.inter(fontSize: 12, color: AppTheme.ink600), textAlign: TextAlign.center),
               const SizedBox(height: 24),
               Align(
                 alignment: Alignment.centerLeft,

@@ -12,7 +12,7 @@ void main() {
     addTearDown(tester.view.resetPhysicalSize);
 
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const PinkSlipReportApp());
+    await tester.pumpWidget(const SmartProApp());
 
     // ─────────────────────────────────────────────────────────────────
     // 1. SIGN IN SCREEN TESTS

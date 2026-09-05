@@ -13,11 +13,11 @@ import 'features/authentication/presentation/screens/reset_password_screen.dart'
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const PinkSlipReportApp());
+  runApp(const SmartProApp());
 }
 
-class PinkSlipReportApp extends StatelessWidget {
-  const PinkSlipReportApp({super.key});
+class SmartProApp extends StatelessWidget {
+  const SmartProApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class PinkSlipReportApp extends StatelessWidget {
       listenable: AppStateManager.instance,
       builder: (context, _) {
         return MaterialApp(
-          title: 'PinkSlipReport',
+          title: 'SmartPro',
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           home: const MainRouterScreen(),
